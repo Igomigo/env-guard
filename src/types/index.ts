@@ -1,10 +1,13 @@
+type LogStyle = "color" | "plain";
+
+export type ValidationRule = "string" | "number" | "boolean" | "url" | "email";
+
+type RequiredVarsMap = Record<string, ValidationRule>;
+
 export interface IOptions {
   exitOnFail: boolean;
-  logStyle: "color" | "plain";
+  logStyle: LogStyle;
 }
-
-export type RequiredVarsMap = Record<string, unknown>;
-
 export interface EnvGuardConfig {
   required: RequiredVarsMap;
   options?: IOptions;
