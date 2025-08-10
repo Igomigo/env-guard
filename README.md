@@ -1,4 +1,4 @@
-## EnvGuard 🛡️
+## EnvGuard 🛡️⚔️
 
 Simple, framework-agnostic SDK for validating required environment variables in Node.js apps. Keep configs clean, fail fast with friendly, well-formatted logs.
 
