@@ -12,7 +12,7 @@ export class Validators {
   }
 
   public static isUrl(value: string): boolean {
-    return /^https?:\/\/.+/.test(value);
+    return /^(http|https):\/\/.+/.test(value);
   }
 
   public static isEmail(value: string): boolean {

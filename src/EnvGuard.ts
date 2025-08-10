@@ -1,7 +1,7 @@
 import { DEFAULT_OPTIONS } from "./config/defaults";
 import { EnvGuardConfig } from "./types";
 import { getEnvVar } from "./utils/loader";
-import validationEngine from "./utils/validationEngine";
+import { ValidationEngine } from "./utils/validationEngine";
 
 export class EnvGuard {
   private requiredVars: EnvGuardConfig["required"];
@@ -24,8 +24,17 @@ export class EnvGuard {
         continue;
       }
 
-      // Validate the variable against the rule
-      const isValid = validationEngine.validate(rule);
+      // Validate the value against the rule
+      const isValid = ValidationEngine.validate(
+        getEnvVar(varName) as string,
+        rule
+      );
+
+      if (!isValid) {
+        errors.push(
+          `Environment variable ${varName} must be a valid ${rule}. Please check the documentation.`
+        );
+      }
     }
   }
 }
