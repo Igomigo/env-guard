@@ -1,7 +1,12 @@
 import { Validators } from "./validator";
 import { ValidationRule } from "../types";
-
 export class ValidationEngine {
+  /**
+   * Validates the environment variable value against the rule
+   * @param value - The value to validate
+   * @param rule - The rule to validate against
+   * @returns true if the value is valid, false otherwise
+   */
   public static validate(value: string, rule: ValidationRule): boolean {
     switch (rule) {
       case "string":

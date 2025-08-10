@@ -12,12 +12,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/chalk": "^2.2.4",
     "@types/node": "^24.2.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "chalk": "^5.5.0"
+    "chalk": "^4.1.2"
   }
 }
