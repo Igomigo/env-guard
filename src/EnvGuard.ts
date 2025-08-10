@@ -1,6 +1,6 @@
 import { DEFAULT_OPTIONS } from "./config/defaults";
 import { EnvGuardConfig } from "./types";
-import { formatErrors } from "./utils/formatter";
+import { ErrorFormatter } from "./utils/formatter";
 import { getEnvVar } from "./utils/loader";
 import { ValidationEngine } from "./utils/validationEngine";
 
@@ -44,7 +44,10 @@ export class EnvGuard {
 
     // If there are errors, format them and exit if configured to do so
     if (errors.length > 0) {
-      const formattedErrors = formatErrors(errors, this.options?.logStyle!);
+      const formattedErrors = ErrorFormatter.formatErrors(
+        errors,
+        this.options?.logStyle || "plain"
+      );
       if (this.options?.exitOnFail) {
         console.log(formattedErrors);
         process.exit(1);

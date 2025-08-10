@@ -1,1 +1,4 @@
-console.log("EnvGuard SDK Initialized");
+import { EnvGuard } from "./EnvGuard";
+
+export { EnvGuard };
+export * from "./types";
