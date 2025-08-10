@@ -14,7 +14,7 @@ export class ValidationEngine {
       case "number":
         return Validators.isNumber(Number(value));
       case "boolean":
-        return Validators.isBoolean(Boolean(value));
+        return Validators.isBooleanString(value);
       case "url":
         return Validators.isUrl(value);
       case "email":

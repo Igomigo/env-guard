@@ -19,21 +19,19 @@ export class EnvGuard {
    */
   public validate() {
     // Array of accumulated Errors if any
-    let errors: string[] = [];
+    const errors: string[] = [];
 
     // Validate each required variable
     for (const [varName, rule] of Object.entries(this.requiredVars)) {
-      // Check if the variable is set
-      if (!getEnvVar(varName)) {
+      // Load once per var
+      const value = getEnvVar(varName);
+      if (!value) {
         errors.push(`Missing required environment variable: ${varName}`);
         continue;
       }
 
       // Validate the value against the rule
-      const isValid = ValidationEngine.validate(
-        getEnvVar(varName) as string,
-        rule
-      );
+      const isValid = ValidationEngine.validate(value, rule);
 
       if (!isValid) {
         errors.push(
@@ -61,6 +59,6 @@ export class EnvGuard {
       );
     }
 
-    return true;
+    return errors.length === 0;
   }
 }
