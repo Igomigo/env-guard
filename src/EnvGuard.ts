@@ -44,7 +44,7 @@ export class EnvGuard {
     if (errors.length > 0) {
       const formattedErrors = ErrorFormatter.formatErrors(
         errors,
-        this.options?.logStyle || "plain"
+        this.options?.logStyle!
       );
       if (this.options?.exitOnFail) {
         console.log(formattedErrors);
