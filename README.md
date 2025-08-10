@@ -2,6 +2,18 @@
 
 Simple, framework-agnostic SDK for validating required environment variables in Node.js apps. Keep configs clean, fail fast with friendly, well-formatted logs.
 
+### What EnvGuard solves
+
+You ship a service that runs perfectly locally and on staging, but production crashes or—worse—behaves unpredictably because:
+
+- A required variable (like `DATABASE_URL`) wasn’t set in the production/local/staging environment
+- `PORT` was set to `"eighty"` instead of a number
+- `ADMIN_EMAIL` had a typo
+- `BASE_URL` missed its protocol and broke redirects
+- New feature depends on a fresh env var; a team mate forgot to include it in prod environment. All quiet at boot… then the first request hits that path and kaboom — hello 500s.
+
+EnvGuard performs a quick preflight at startup, validating the presence and basic types of the environment variables your app relies on. When something’s off, it prints a clear, friendly report and (optionally) exits fast so you don’t ship broken configs. This saves hours of debugging and prevents subtle runtime bugs caused by misconfigured environments in local dev, CI, and production.
+
 ### Features
 
 - **Zero coupling to dotenv** (or any loader) – you bring envs, EnvGuard validates
