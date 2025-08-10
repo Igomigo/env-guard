@@ -3,7 +3,6 @@ export interface IOptions {
   logStyle: "color" | "plain";
 }
 
-// A map of environment variable names to metadata/flags.
 export type RequiredVarsMap = Record<string, unknown>;
 
 export interface EnvGuardConfig {
