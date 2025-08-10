@@ -1,4 +1,4 @@
-type LogStyle = "color" | "plain";
+export type LogStyle = "color" | "plain";
 
 export type ValidationRule = "string" | "number" | "boolean" | "url" | "email";
 

@@ -1,5 +1,6 @@
 import { DEFAULT_OPTIONS } from "./config/defaults";
 import { EnvGuardConfig } from "./types";
+import { formatErrors } from "./utils/formatter";
 import { getEnvVar } from "./utils/loader";
 import { ValidationEngine } from "./utils/validationEngine";
 
@@ -32,9 +33,16 @@ export class EnvGuard {
 
       if (!isValid) {
         errors.push(
-          `Environment variable ${varName} must be a valid ${rule}. Please check the documentation.`
+          `Environment variable "${varName}" must be a valid ${rule}.`
         );
       }
     }
+
+    if (errors.length > 0) {
+      const formattedErrors = formatErrors(errors, this.options?.logStyle!);
+      if (this.options?.exitOnFail) {
+        
+      }
+    } 
   }
 }
