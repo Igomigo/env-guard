@@ -23,7 +23,7 @@ export class EnvGuard {
 
     // Validate each required variable
     for (const [varName, rule] of Object.entries(this.requiredVars)) {
-      // Load once per var
+      // Load once per variable
       const value = getEnvVar(varName);
       if (!value) {
         errors.push(`Missing required environment variable: ${varName}`);
