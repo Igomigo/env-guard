@@ -14,8 +14,20 @@ export class EnvGuard {
   }
 
   /**
-   * Validates the environment variables against the required variables
-   * @returns true if the environment variables are valid, false otherwise
+   * Validates environment variables against the required configuration rules.
+   * When called, it checks if all variables defined in the config exist in .env
+   * and match their specified validation rules (e.g. 'string', 'number', 'url', etc).
+   * 
+   * @returns {boolean} true if all environment variables are valid and present, false if validation fails
+   * @example
+   * const config = {
+   *   required: {
+   *     API_KEY: "string",
+   *     PORT: "number"
+   *   }
+   * };
+   * const guard = new EnvGuard(config);
+   * guard.validate(); // Validates API_KEY and PORT in .env
    */
   public validate() {
     // Array of accumulated Errors if any
